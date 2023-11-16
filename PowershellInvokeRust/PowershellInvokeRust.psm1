@@ -18,7 +18,8 @@ if ($PSVersion.Major -eq 5 -and $PSVersion.Minor -ge 1) {
     # not supported powershell
     # throw Error
 }
-$src = Join-Path $path "PSBinaryManupulate.dll"
+
+$src = Join-Path $path "lib.dll"
 # load csharp library.
 Add-Type -Path $src
 
