@@ -29,36 +29,35 @@ jobs:
       shell: bash
       run: |
         target=""
+        suffix=""
         ext=""
         if [ "${{ matrix.os }}" = "ubuntu-20.04" ]; then
           target="x86_64-unknown-linux-gnu"
+          suffix="lib"
           ext="so"
         elif [ "${{ matrix.os }}" = "windows-2019" ]; then
           target="x86_64-pc-windows-msvc"
           ext="dll"
         elif [ "${{ matrix.os }}" = "macos-12" ]; then
           target="x86_64-apple-darwin"
+          suffix="lib"
           ext="dylib"
         else
           echo "error"
         fi
         echo "target=${target}" >> "$GITHUB_OUTPUT"
+        echo "suffix=${suffix}" >> "$GITHUB_OUTPUT"
         echo "ext=${ext}" >> "$GITHUB_OUTPUT"
 
     - uses: actions/checkout@v4
     - name: Build
       run: cd rust_src && cargo build --target ${{ steps.osarch.outputs.target }} --verbose --release
 
-    - name: Generate PSD1
-      run: |
-        ls -1 rust_src/target/${{ steps.osarch.outputs.target }}
-        ls -1 rust_src/target/${{ steps.osarch.outputs.target }}/release
-
     - name: upload share_library
       uses: actions/upload-artifact@v3
       with:
         name: ${{ steps.osarch.outputs.target }}
-        path: rust_src/target/${{ steps.osarch.outputs.target }}/release/rust_src.${{ steps.osarch.outputs.ext }}
+        path: rust_src/target/${{ steps.osarch.outputs.target }}/release/${{ steps.osarch.outputs.suffix }}rust_src.${{ steps.osarch.outputs.ext }}
         if-no-files-found: error
 
     # - name: Run tests

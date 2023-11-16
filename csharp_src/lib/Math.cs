@@ -14,16 +14,16 @@ namespace lib {
     {
 
         // このcsharpのdllからの相対パスか絶対パスを書く
-        [DllImport("../../share_lib/x86_64-apple-darwin/rust_src.dylib", EntryPoint = "add")]
+        [DllImport("../../share_lib/x86_64-apple-darwin/librust_src.dylib", EntryPoint = "add")]
         public static extern Int32 add_x86_64_apple_darwin(Int32 x, Int32 y);
 
-        [DllImport("../../share_lib/aarch64-apple-darwin/rust_src.dylib", EntryPoint = "add")]
+        [DllImport("../../share_lib/aarch64-apple-darwin/librust_src.dylib", EntryPoint = "add")]
         public static extern Int32 add_aarch64_apple_darwin(Int32 x, Int32 y);
 
-        [DllImport("../../share_lib/x86_64-unknown-linux-gnu/rust_src.so", EntryPoint = "add")]
+        [DllImport("../../share_lib/x86_64-unknown-linux-gnu/librust_src.so", EntryPoint = "add")]
         public static extern Int32 add_x86_64_unknown_linux_gnu(Int32 x, Int32 y);
 
-        [DllImport("../../share_lib/aarch64-unknown-linux-gnu/rust_src.so", EntryPoint = "add")]
+        [DllImport("../../share_lib/aarch64-unknown-linux-gnu/librust_src.so", EntryPoint = "add")]
         public static extern Int32 add_aarch64_unknown_linux_gnu(Int32 x, Int32 y);
 
         [DllImport("../../share_lib/x86_64-pc-windows-msvc/rust_src.dll", EntryPoint = "add")]
