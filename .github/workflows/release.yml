@@ -14,14 +14,14 @@ permissions:
 
 jobs:
   rust-build:
-    # 必要になる
-    runs-on: ubuntu-20.04
 
     env:
       CARGO_TERM_COLOR: always
     strategy:
       matrix:
         os: [ubuntu-20.04, windows-2019, macos-12]
+    # 必要になる
+    runs-on: ${{ matrix.os }}
 
     steps:
     - name: specific running os arch.
@@ -47,7 +47,7 @@ jobs:
 
     - uses: actions/checkout@v4
     - name: Build
-      run: cd rust_src && rustup target add "${{ steps.osarch.outputs.target }}" && cargo build --target "${{ steps.osarch.outputs.target }}" --verbose --release
+      run: cd rust_src && cargo build --target "${{ steps.osarch.outputs.target }}" --verbose --release
 
     - name: upload share_library
       uses: actions/upload-artifact@v3
