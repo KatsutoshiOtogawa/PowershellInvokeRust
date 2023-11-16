@@ -30,13 +30,13 @@ jobs:
       run: |
         target=""
         ext=""
-        if [ "${{ matrix.os }}" == "ubuntu-20.04" ]; then
+        if [ "${{ matrix.os }}" = "ubuntu-20.04" ]; then
           target="x86_64-unknown-linux-gnu"
           ext="so"
-        elif [ "${{ matrix.os }}" == "windows-2019" ]; then
+        elif [ "${{ matrix.os }}" = "windows-2019" ]; then
           target="x86_64-pc-windows-msvc"
           ext="dll"
-        elif [ "${{ matrix.os }}" == "macos-12" ]; then
+        elif [ "${{ matrix.os }}" = "macos-12" ]; then
           target="x86_64-apple-darwin"
           ext="dylib"
         else
