@@ -49,11 +49,16 @@ jobs:
     - name: Build
       run: cd rust_src && cargo build --target ${{ steps.osarch.outputs.target }} --verbose --release
 
+    - name: Generate PSD1
+      run: |
+        ls -1 rust_src/target
+
     - name: upload share_library
       uses: actions/upload-artifact@v3
       with:
         name: ${{ steps.osarch.outputs.target }}
         path: rust_src/target/${{ steps.osarch.outputs.target }}/release/rust_src.${{ steps.osarch.outputs.ext }}
+        if-no-files-found: error
 
     # - name: Run tests
     #   run: cargo test --verbose
@@ -83,18 +88,21 @@ jobs:
       with:
         name: net6.0-artifact
         path: csharp_src/lib/bin/Release/net6.0/lib.dll
+        if-no-files-found: error
         
     - name: upload share_library net7.0-artifact
       uses: actions/upload-artifact@v3
       with:
         name: net7.0-artifact
         path: csharp_src/lib/bin/Release/net7.0/lib.dll
+        if-no-files-found: error
 
     - name: upload share_library net48-artifact
       uses: actions/upload-artifact@v3
       with:
         name: net48-artifact
         path: csharp_src/lib/bin/Release/net48/lib.dll
+        if-no-files-found: error
 
   powershell_release:
     runs-on: windows-2019
