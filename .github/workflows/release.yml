@@ -42,8 +42,8 @@ jobs:
         else
           echo "error"
         fi
-        echo "target=${target}" >> $env:GITHUB_OUTPUT
-        echo "ext=${ext}" >> $env:GITHUB_OUTPUT
+        echo "target=${target}" >> "$GITHUB_OUTPUT"
+        echo "ext=${ext}" >> "$GITHUB_OUTPUT"
 
     - uses: actions/checkout@v4
     - name: Build
