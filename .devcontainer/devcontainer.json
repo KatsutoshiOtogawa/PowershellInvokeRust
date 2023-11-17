@@ -36,7 +36,7 @@
 			],
 			"settings": {
 				"rust-analyzer.linkedProjects": [
-					"/workspaces/PSBinaryManuplate/rust_src/Cargo.toml"
+					"/workspaces/PowershellInvokeRust/rust_src/Cargo.toml"
 				]
 			}
 		}
